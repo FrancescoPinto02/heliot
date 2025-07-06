@@ -18,18 +18,21 @@ def remove_ending_quote(s):
 
 def process_response(response):
     result_text = ""
-    for line in response.iter_lines():
-        if line:
-            decoded_line = line.decode('utf-8')
-            if "data: {\"message\":" in decoded_line:
-                j = decoded_line.rfind("\"}")
-                decoded_line = decoded_line[5:]
-                mess = json.loads(decoded_line)
-                decoded_line = mess['message']
-            
-            if not "data: {\"input\":" in decoded_line:
-                result_text += decoded_line
-    
+    try:
+        for line in response.iter_lines():
+            if line:
+                decoded_line = line.decode('utf-8')
+                if "data: {\"message\":" in decoded_line:
+                    j = decoded_line.rfind("\"}")
+                    decoded_line = decoded_line[5:]
+                    mess = json.loads(decoded_line)
+                    decoded_line = mess['message']
+                
+                if not "data: {\"input\":" in decoded_line:
+                    result_text += decoded_line
+    except:
+        pass
+
     try:
         result_json = json.loads(result_text)
         return result_json
@@ -124,19 +127,41 @@ with tab1:
                             mess = json.loads(decoded_line)
                             decoded_line = mess['message']
                         
-                        if not "data: {\"input\":" in decoded_line:
+                        if not "data: {\"input\":" in decoded_line and not "data: {\'input\':" in decoded_line:
                             result_text += decoded_line 
+                        
+                        #print("QUI", result_text)
+
                         result_text = result_text.replace('{"a":"','').replace('","r":"','\n\n').replace('","rt":"','\n\n').replace("}","")
+                        result_text = result_text.replace('", "rt":"','\n\n').replace('", "r":"','\n\n').replace("}",'')
                         result_container.write(result_text)
                         #text_area.text_area("Result", result_text, height=400, key="result_textarea")
-                        if "data: {\"input\":" in decoded_line:
+                        if "data: {\"input\":" in decoded_line or "data: {\'input\':" in decoded_line:
                             tokens = decoded_line[5:]
+                            print(tokens)
                             tk = json.loads(tokens)
                             print("\nTOKENS", tk['input'], tk['output'], tk['total'])
 
                 if result_text:
                     result_text = remove_ending_quote(result_text)
-                    result_container.write(result_text)
+                    #result_container.write(result_text)
+                    # Determina l'icona in base alla gravità
+                    severity_icon = ""
+                    last_part = result_text[-200:].lower()  # Considera gli ultimi 200 caratteri
+                    
+                    if "life-threatening" in last_part and "non life-threatening" not in last_part:
+                        severity_icon = "🔴"  # Severe - rosso
+                    elif "non life-threatening immune-mediated" in last_part:
+                        severity_icon = "🟠"  # Warning - arancione
+                    elif "non life-threatening non immune-mediated" in last_part:
+                        severity_icon = "🟡"  # Lenient warning - giallo
+                    # Se c'è "none" o nessuna delle condizioni sopra, non aggiungiamo icona
+                    
+                    # Scrivi il testo con l'eventuale icona
+                    if severity_icon:
+                        result_container.write(f"{result_text}\n\n{severity_icon}")
+                    else:
+                        result_container.write(result_text)
                 #st.subheader("Token usage")
                 #st.json(tk)
             else:

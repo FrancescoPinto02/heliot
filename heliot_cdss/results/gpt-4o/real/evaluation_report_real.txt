@@ -1,0 +1,159 @@
+EVALUATION REPORT
+================
+
+CLASSIFICATION METRICS
+--------------------
+Overall Metrics:
+Accuracy: 0.9938
+Macro Precision: 1.0000
+Macro Recall: 0.9928
+Macro F1: 0.9963
+
+Per-Class Metrics:
+
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  Precision: 1.0000
+  Recall: 0.9783
+  F1: 0.9890
+
+REACTION METRICS
+---------------
+Overall Metrics:
+Accuracy: 0.9938
+Macro Precision: 1.0000
+Macro Recall: 0.9938
+Macro F1: 0.9969
+
+Per-Class Metrics:
+
+NON LIFE-THREATENING IMMUNE-MEDIATED:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+None:
+  Precision: 1.0000
+  Recall: 0.9938
+  F1: 0.9969
+
+ALERT METRICS
+------------
+Overall Metrics:
+Accuracy: 0.9938
+Macro Precision: 1.0000
+Macro Recall: 0.9938
+Macro F1: 0.9969
+
+Per-Class Metrics:
+
+INTERRUPTIVE ALERT:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+NO ALERT NEEDED:
+  Precision: 1.0000
+  Recall: 0.9938
+  F1: 0.9969
+
+DATASET STATISTICS
+-----------------
+Total samples: 162
+Valid samples: 162
+Missing labels: 0
+
+Classification distribution:
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  True labels: 2
+  Predicted labels: 2
+  Correctly classified: 2
+  Incorrectly classified: 0
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  True labels: 0
+  Predicted labels: 1
+  Correctly classified: 0
+  Incorrectly classified: 0
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  True labels: 114
+  Predicted labels: 114
+  Correctly classified: 114
+  Incorrectly classified: 0
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  True labels: 46
+  Predicted labels: 45
+  Correctly classified: 45
+  Incorrectly classified: 1
+
+Reaction distribution:
+NON LIFE-THREATENING IMMUNE-MEDIATED:
+  True reactions: 0
+  Predicted reactions: 1
+  Correctly classified: 0
+  Incorrectly classified: 0
+None:
+  True reactions: 162
+  Predicted reactions: 161
+  Correctly classified: 161
+  Incorrectly classified: 1
+
+Alert distribution:
+INTERRUPTIVE ALERT:
+  True alerts: 0
+  Predicted alerts: 1
+  Correctly classified: 0
+  Incorrectly classified: 0
+NO ALERT NEEDED:
+  True alerts: 162
+  Predicted alerts: 161
+  Correctly classified: 161
+  Incorrectly classified: 1
+
+
+CLINICAL SAFETY ANALYSIS
+=======================
+
+ALERT DISTRIBUTION
+-----------------
+No Alert needed: 161 (99.4%)
+Non-interruptive Alert: 0 (0.0%)
+Interruptive Alert: 1 (0.6%)
+
+Alert perc. Reduction vs Traditional CDSS: 0.6%
+
+CRITICAL (LIFE-THREATENING) REACTION DETECTION
+---------------------------------------------
+Sensitivity (Recall): 0.0000
+Specificity: 0.9938
+Positive Predictive Value (Precision): 0.0000
+Negative Predictive Value: 1.0000
+False Negatives (Missed Critical): 0
+False Positives (Unnecessary Critical Alerts): 1
+
+ANY ALERT DETECTION
+------------------
+Sensitivity: 0.0000
+Specificity: 0.9938
+Positive Predictive Value: 0.0000
+Negative Predictive Value: 1.0000
+
+CLINICAL RISK ASSESSMENT
+-----------------------
+Missed Critical Reaction Rate: 0.00%
+False Alarm Rate: 1.23%
+Alert Burden Reduction: 0.62%
+

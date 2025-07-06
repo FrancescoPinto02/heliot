@@ -1,0 +1,159 @@
+EVALUATION REPORT
+================
+
+CLASSIFICATION METRICS
+--------------------
+Overall Metrics:
+Accuracy: 0.9877
+Macro Precision: 1.0000
+Macro Recall: 0.9858
+Macro F1: 0.9928
+
+Per-Class Metrics:
+
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  Precision: 1.0000
+  Recall: 0.9574
+  F1: 0.9783
+
+REACTION METRICS
+---------------
+Overall Metrics:
+Accuracy: 0.9877
+Macro Precision: 1.0000
+Macro Recall: 0.9877
+Macro F1: 0.9938
+
+Per-Class Metrics:
+
+LIFE-THREATENING:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+None:
+  Precision: 1.0000
+  Recall: 0.9877
+  F1: 0.9938
+
+ALERT METRICS
+------------
+Overall Metrics:
+Accuracy: 0.9877
+Macro Precision: 1.0000
+Macro Recall: 0.9877
+Macro F1: 0.9938
+
+Per-Class Metrics:
+
+INTERRUPTIVE ALERT:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1: 0.0000
+
+NO ALERT NEEDED:
+  Precision: 1.0000
+  Recall: 0.9877
+  F1: 0.9938
+
+DATASET STATISTICS
+-----------------
+Total samples: 162
+Valid samples: 162
+Missing labels: 0
+
+Classification distribution:
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  True labels: 2
+  Predicted labels: 2
+  Correctly classified: 2
+  Incorrectly classified: 0
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  True labels: 0
+  Predicted labels: 2
+  Correctly classified: 0
+  Incorrectly classified: 0
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  True labels: 113
+  Predicted labels: 113
+  Correctly classified: 113
+  Incorrectly classified: 0
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  True labels: 47
+  Predicted labels: 45
+  Correctly classified: 45
+  Incorrectly classified: 2
+
+Reaction distribution:
+LIFE-THREATENING:
+  True reactions: 0
+  Predicted reactions: 2
+  Correctly classified: 0
+  Incorrectly classified: 0
+None:
+  True reactions: 162
+  Predicted reactions: 160
+  Correctly classified: 160
+  Incorrectly classified: 2
+
+Alert distribution:
+INTERRUPTIVE ALERT:
+  True alerts: 0
+  Predicted alerts: 2
+  Correctly classified: 0
+  Incorrectly classified: 0
+NO ALERT NEEDED:
+  True alerts: 162
+  Predicted alerts: 160
+  Correctly classified: 160
+  Incorrectly classified: 2
+
+
+CLINICAL SAFETY ANALYSIS
+=======================
+
+ALERT DISTRIBUTION
+-----------------
+No Alert needed: 160 (98.8%)
+Non-interruptive Alert: 0 (0.0%)
+Interruptive Alert: 2 (1.2%)
+
+Alert perc. Reduction vs Traditional CDSS: 0.0%
+
+CRITICAL (LIFE-THREATENING) REACTION DETECTION
+---------------------------------------------
+Sensitivity (Recall): 0.0000
+Specificity: 0.9877
+Positive Predictive Value (Precision): 0.0000
+Negative Predictive Value: 1.0000
+False Negatives (Missed Critical): 0
+False Positives (Unnecessary Critical Alerts): 2
+
+ANY ALERT DETECTION
+------------------
+Sensitivity: 0.0000
+Specificity: 0.9877
+Positive Predictive Value: 0.0000
+Negative Predictive Value: 1.0000
+
+CLINICAL RISK ASSESSMENT
+-----------------------
+Missed Critical Reaction Rate: 0.00%
+False Alarm Rate: 2.47%
+Alert Burden Reduction: 0.00%
+

@@ -5,15 +5,18 @@ from itertools import product
 import gc
 from unidecode import unidecode
 import numpy as np
-from typing import List, Dict
+from typing import List, Dict, Any, Optional
 import traceback
+from .base_db_mgt import *
 
-class DatabaseManagement:
-    def __init__(self, db_uri="drugs_db", store_lower_case=False, compress_attrs=False, tiles=None):
-        self.db_uri = db_uri
-        self.store_lower_case = store_lower_case
-        self.compress_attrs = compress_attrs
-        self.tiles = tiles
+class DatabaseManagement(BaseDatabaseManagement):
+    #def __init__(self, db_uri="drugs_db", store_lower_case=False, compress_attrs=False, tiles=None):
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        super().__init__(config)
+        self.db_uri = config.get('db_uri','drugs_db')
+        self.store_lower_case = config.get('store_lower_case', False)
+        self.compress_attrs = config.get('compress_attrs',False)
+        self.tiles = config.get('tiles', None)
 
 
     # Transform the potential utf-8 text into ascii unidecode
@@ -621,7 +624,8 @@ class DatabaseManagement:
     
 if __name__ == "__main__":
     # Create the database
-    dm = DatabaseManagement(store_lower_case=True) #, compress_attrs=True, tiles=20)
+    config = {'store_lower_case':True}
+    dm = DatabaseManagement(config) #, compress_attrs=True, tiles=20)
     dm.create_and_populate_DBFromCSV()
 
     # Search a drug by drug_code 

@@ -1,0 +1,219 @@
+EVALUATION REPORT
+================
+
+CLASSIFICATION METRICS
+--------------------
+Overall Metrics:
+Accuracy: 0.9980
+Macro Precision: 0.9911
+Macro Recall: 0.9992
+Macro F1: 0.9950
+
+Per-Class Metrics:
+
+CHEMICAL-BASED CROSS-REACTIVITY TO EXCIPIENTS:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DIRECT ACTIVE INGREDIENT REACTIVITY:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DIRECT EXCIPIENT REACTIVITY:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  Precision: 1.0000
+  Recall: 0.9944
+  F1: 0.9972
+
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  Precision: 0.9375
+  Recall: 1.0000
+  F1: 0.9677
+
+REACTION METRICS
+---------------
+Overall Metrics:
+Accuracy: 1.0000
+Macro Precision: 1.0000
+Macro Recall: 1.0000
+Macro F1: 1.0000
+
+Per-Class Metrics:
+
+LIFE-THREATENING:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NON LIFE-THREATENING IMMUNE-MEDIATED:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NON LIFE-THREATENING NON IMMUNE-MEDIATED:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+None:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+ALERT METRICS
+------------
+Overall Metrics:
+Accuracy: 1.0000
+Macro Precision: 1.0000
+Macro Recall: 1.0000
+Macro F1: 1.0000
+
+Per-Class Metrics:
+
+INTERRUPTIVE ALERT:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NO ALERT NEEDED:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+NON-INTERRUPTIVE ALERT:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1: 1.0000
+
+DATASET STATISTICS
+-----------------
+Total samples: 1000
+Valid samples: 1000
+Missing labels: 0
+
+Classification distribution:
+CHEMICAL-BASED CROSS-REACTIVITY TO EXCIPIENTS:
+  True labels: 50
+  Predicted labels: 50
+  Correctly classified: 50
+  Incorrectly classified: 0
+DIRECT ACTIVE INGREDIENT REACTIVITY:
+  True labels: 30
+  Predicted labels: 30
+  Correctly classified: 30
+  Incorrectly classified: 0
+DIRECT EXCIPIENT REACTIVITY:
+  True labels: 24
+  Predicted labels: 24
+  Correctly classified: 24
+  Incorrectly classified: 0
+DRUG CLASS CROSS-REACTIVITY WITH DOCUMENTED TOLERANCE:
+  True labels: 355
+  Predicted labels: 353
+  Correctly classified: 353
+  Incorrectly classified: 2
+DRUG CLASS CROSS-REACTIVITY WITHOUT DOCUMENTED TOLERANCE:
+  True labels: 500
+  Predicted labels: 500
+  Correctly classified: 500
+  Incorrectly classified: 0
+NO DOCUMENTED REACTIONS OR INTOLERANCES:
+  True labels: 11
+  Predicted labels: 11
+  Correctly classified: 11
+  Incorrectly classified: 0
+NO REACTIVITY TO PRESCRIBED DRUG'S INGREDIENTS OR EXCIPIENTS:
+  True labels: 30
+  Predicted labels: 32
+  Correctly classified: 30
+  Incorrectly classified: 0
+
+Reaction distribution:
+LIFE-THREATENING:
+  True reactions: 133
+  Predicted reactions: 133
+  Correctly classified: 133
+  Incorrectly classified: 0
+NON LIFE-THREATENING IMMUNE-MEDIATED:
+  True reactions: 296
+  Predicted reactions: 296
+  Correctly classified: 296
+  Incorrectly classified: 0
+NON LIFE-THREATENING NON IMMUNE-MEDIATED:
+  True reactions: 175
+  Predicted reactions: 175
+  Correctly classified: 175
+  Incorrectly classified: 0
+None:
+  True reactions: 396
+  Predicted reactions: 396
+  Correctly classified: 396
+  Incorrectly classified: 0
+
+Alert distribution:
+INTERRUPTIVE ALERT:
+  True alerts: 429
+  Predicted alerts: 429
+  Correctly classified: 429
+  Incorrectly classified: 0
+NO ALERT NEEDED:
+  True alerts: 396
+  Predicted alerts: 396
+  Correctly classified: 396
+  Incorrectly classified: 0
+NON-INTERRUPTIVE ALERT:
+  True alerts: 175
+  Predicted alerts: 175
+  Correctly classified: 175
+  Incorrectly classified: 0
+
+
+CLINICAL SAFETY ANALYSIS
+=======================
+
+ALERT DISTRIBUTION
+-----------------
+No Alert needed: 396 (39.6%)
+Non-interruptive Alert: 175 (17.5%)
+Interruptive Alert: 429 (42.9%)
+
+Alert perc. Reduction vs Traditional CDSS: 53.0%
+
+CRITICAL (LIFE-THREATENING) REACTION DETECTION
+---------------------------------------------
+Sensitivity (Recall): 1.0000
+Specificity: 1.0000
+Positive Predictive Value (Precision): 1.0000
+Negative Predictive Value: 1.0000
+False Negatives (Missed Critical): 0
+False Positives (Unnecessary Critical Alerts): 0
+
+ANY ALERT DETECTION
+------------------
+Sensitivity: 1.0000
+Specificity: 1.0000
+Positive Predictive Value: 1.0000
+Negative Predictive Value: 1.0000
+
+CLINICAL RISK ASSESSMENT
+-----------------------
+Missed Critical Reaction Rate: 0.00%
+False Alarm Rate: 0.00%
+Alert Burden Reduction: 53.00%
+

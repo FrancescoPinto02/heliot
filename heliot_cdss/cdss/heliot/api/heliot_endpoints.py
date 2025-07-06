@@ -12,14 +12,6 @@ router = APIRouter()
 heliot = HeliotLLM()
 
 
-@router.post("/allergy_check")
-async def allergy_check(request: AllergyCheckRequest):
-    drug_code = request.drug_code
-    allergy = request.allergy
-
-    return StreamingResponse(heliot.dss_check(drug_code, allergy), media_type='text/event-stream')
-
-
 @router.post("/allergy_check_enhanced")
 async def allergy_check(request: AllergyCheckEnhancedRequest):
     patient_id = request.patient_id

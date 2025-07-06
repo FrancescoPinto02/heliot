@@ -1,0 +1,39 @@
+Informazioni cronologiche,"A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 1]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 2 ]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 3 ]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 4 ]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 5 ]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 6]","A1. Clinical Appropriateness of HELIOT’s response:   
+Rate from 1 (completely inappropriate) to 5 (completely appropriate) [Case 7]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 1]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 2]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 3]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 4]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 5]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 6]","A2. Risk Assessment Accuracy
+How accurately does HELIOT identify and categorize clinical risks (i’e. Life-threatening situations, where drugs may cause severe reactions)?
+Rate from 1 (Very inaccurate) to 5 (Very accurate) [Case 7]",B1. Alert Preference [Case 1],B1. Alert Preference [Case 2 ],B1. Alert Preference [Case 3],B1. Alert Preference [Case 4],B1. Alert Preference [Case 5],B1. Alert Preference [Case 6 ],B1. Alert Preference [Case 7],"B2. Alert Fatigue Impact
+Rate how much HELIOT’s approach would reduce alert fatigue compared to traditional CDSS","B3. Alert Contextuality
+How well does HELIOT consider clinical context when generating alerts?","C1. Information Clarity
+How clear and understandable are HELIOT’s recommendations?","C2. Clinical Reasoning Transparency
+How well does HELIOT explain its clinical reasoning?","C3. Time Efficiency
+How would HELIOT impact the time you spend reviewing medication alerts?","C4. Trust and Confidence
+How confident would you feel considering HELIOT’s recommendations in your decisions? ","D1. Clinical Decision Support Value
+Overall, how valuable would HELIOT be for your clinical decision-making support?","D2. Likelihood of Adoption
+How likely would you be to use HELIOT in your practice if available?",E1. Medical Speciality,E2. Years of clinical experience,E3.  Current practice setting
+29/06/2025 15.51.16,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Significantly reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Confident,Extremely valuable,Very likely,Internal Medicine,5-10 years,Hospital (inpatient)
+01/07/2025 10.55.01,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Significantly reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Very confident,Extremely valuable,Very likely,Internal Medicine,< 5 years,Hospital (inpatient)
+01/07/2025 10.56.01,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Reduces alert fatigue,Good contextual understanding,Clear and understandable,Excellent explanation of reasoning,Moderately reduces time spent,Confident,Very valuable,Very likely,Internal Medicine,5-10 years,Outpatient clinic
+01/07/2025 10.57.49,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Reduces alert fatigue,Good contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Very confident,Very valuable,Very likely,Internal Medicine,> 20 years,Hospital (inpatient)
+01/07/2025 10.59.00,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Confident,Very valuable,Likely,Internal Medicine,> 20 years,Private practice
+01/07/2025 11.13.44,5,5,4,5,5,4,5,5,5,5,5,5,4,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Significantly reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Very confident,Extremely valuable,Very likely,Primary Care/Family Medicine,11-20 years,Private practice
+01/07/2025 11.15.21,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Significantly reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Very confident,Extremely valuable,Very likely,Internal Medicine,11-20 years,Private practice
+01/07/2025 11.31.33,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Reduces alert fatigue,Good contextual understanding,Very clear and easy to understand,Good explanation of reasoning,Significantly reduces time spent,Confident,Very valuable,Likely,Internal Medicine,11-20 years,Emergency department
+01/07/2025 11.32.39,5,5,5,5,5,5,5,5,5,5,5,5,5,5,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,HELIOT’s Alert,Significantly reduces alert fatigue,Excellent contextual understanding,Very clear and easy to understand,Excellent explanation of reasoning,Significantly reduces time spent,Very confident,Very valuable,Very likely,Primary Care/Family Medicine,5-10 years,Academic medical center

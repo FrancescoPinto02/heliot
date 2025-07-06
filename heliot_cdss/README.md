@@ -29,4 +29,11 @@ To run the Heliot web Application, simply run: `poetry run streamlit run ./cdss/
 ### Datasets
 In the main folder (`heliot_cdss`) there are the following datasets:
 1. patients_synthetic.xslx, the synthetic dataset used for the expertiments
-2. results_full_synth.xslx, the results produced by the Heliot CDSS analyzing the synthetic dataset 
+2. real_data_prescriptions.xlsx, the real-world dataset used for the experiments
+
+### Results
+In the result folder there are the experimental results, as follows:
+1. `gemma` contains the Gemma3 results 
+2. `gpt-4o` contains the GPT-4o results
+3. `sonnet-4` contains the Claude Sonnet 4.0 results
+4. `Usability questionnaire (Answers).csv` contains the answers for the usability study 

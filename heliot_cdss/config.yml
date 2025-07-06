@@ -1,0 +1,27 @@
+# gemma-3-12b-it-qat gpt-4o claude-sonnet-4-20250514
+config:
+  - model: "gpt-4o"
+    family: "openai" # openai, anthropic, openllm, google
+    #url: "http://localhost:1234/v1"
+    #logprobs_service: 
+    #  name: "local" # local or heuristic
+    #  model_name: "google/gemma-3-4b-it" # huggingface model name 
+    #  device: "mps"
+    #  preload_default_model: True
+
+    drug_management: 
+      module_name: "...db_management"
+      class_name: "DatabaseManagement"
+      config:
+        db_uri: "drugs_db"
+        store_lower_case: True
+    
+    need_proc_all: True
+    cot_prompt: True
+    safe_patterns: |
+      (?i)(denies allergies|does not report allergies|no allergies|no known allergy|no known allergies|not allergic|not allergic subject|nega allergie|non riferisce allergie|nessuna allergia|soggetto non allergico)
+
+    tmodel: "gpt-4o"
+    tfamily: "openai"
+    #turl: 
+
