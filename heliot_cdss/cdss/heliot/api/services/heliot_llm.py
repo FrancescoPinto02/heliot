@@ -588,6 +588,16 @@ class HeliotLLM:
 
             print(f"[DEBUG] Thread attivi alla fine: {threading.active_count()}")
             return results
+
+
+    def _sse(self, payload: dict) -> str:
+        """
+        Format a Server-Sent Events (SSE) message line.
+        Produces: data: <json>\n\n
+        """
+        return "data: " + json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n\n"
+
+
     #
     # Perform the DSS logic
     #
@@ -623,9 +633,25 @@ class HeliotLLM:
                 print(match)
                 if match:
                     print('SECURE ANSWER ===========>')
-                    msg = "{\"a\":\"The patient has no known allergies or reactions documented in their information.\", \"r\":\"NO DOCUMENTED REACTIONS OR INTOLERANCES\", \"rt\":\"None\"}"
-                    yield f"data: {json.dumps({"message": msg})}\n\n"
-                    yield f"data: {json.dumps({"input": 2000, "output": 85, "total":  2085, "confidence": 0.888105228, "a_confidence":0.746244826, "r_confidence":0.999996548, "rt_confidence":0.999999806})}\n\n"
+
+                    msg_obj = {
+                        "a": "The patient has no known allergies or reactions documented in their information.",
+                        "r": "NO DOCUMENTED REACTIONS OR INTOLERANCES",
+                        "rt": "None",
+                    }
+
+                    usage_obj = {
+                        "input": 2000,
+                        "output": 85,
+                        "total": 2085,
+                        "confidence": 0.888105228,
+                        "a_confidence": 0.746244826,
+                        "r_confidence": 0.999996548,
+                        "rt_confidence": 0.999999806,
+                    }
+
+                    yield self._sse({"message": msg_obj})
+                    yield self._sse(usage_obj)
                     return
                 
             if pt:
