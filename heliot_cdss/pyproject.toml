@@ -28,8 +28,16 @@ transformers = "^4.52.4"
 accelerate = "^1.7.0"
 tokenizers = "^0.21.1"
 anthropic = "^0.53.0"
+sqlalchemy = "^2.0.47"
+alembic = "^1.18.4"
+psycopg = {extras = ["binary"], version = "^3.3.3"}
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)"
+]

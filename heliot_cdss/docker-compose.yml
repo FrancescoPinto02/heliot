@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: heliot-postgres
+    environment:
+      POSTGRES_DB: heliot
+      POSTGRES_USER: heliot
+      POSTGRES_PASSWORD: heliot
+    ports:
+      - "5432:5432"
+    volumes:
+      - heliot_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U heliot -d heliot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  heliot_pgdata:

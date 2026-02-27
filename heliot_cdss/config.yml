@@ -1,6 +1,6 @@
 # gemma-3-12b-it-qat gpt-4o claude-sonnet-4-20250514
 config:
-  - model: "gpt-4o"
+  - model: "gpt-4o-mini"
     family: "openai" # openai, anthropic, openllm, google
     #url: "http://localhost:1234/v1"
     #logprobs_service: 
@@ -21,7 +21,7 @@ config:
     safe_patterns: |
       (?i)(denies allergies|does not report allergies|no allergies|no known allergy|no known allergies|not allergic|not allergic subject|nega allergie|non riferisce allergie|nessuna allergia|soggetto non allergico)
 
-    tmodel: "gpt-4o"
+    tmodel: "gpt-4o-mini"
     tfamily: "openai"
     #turl: 
 
