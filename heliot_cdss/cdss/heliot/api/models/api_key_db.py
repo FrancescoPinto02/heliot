@@ -1,5 +1,5 @@
 from sqlalchemy import String, Boolean, DateTime, func, ForeignKey
-from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy.dialects.postgresql import ARRAY, BYTEA
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..db.session import Base
@@ -16,11 +16,14 @@ class ApiKey(Base):
         index=True,
     )
 
+    env: Mapped[str] = mapped_column(String(16), nullable=False, index=True)
+
     # Public Prefix (Fast Lookup).
     key_prefix: Mapped[str] = mapped_column(String(64), nullable=False, unique=True, index=True)
 
-    # Token Hash
-    key_hash: Mapped[str] = mapped_column(String(128), nullable=False)
+    # Token Hash (32 bytes HMAC-SHA256)
+    key_hash: Mapped[bytes] = mapped_column(BYTEA, nullable=False, unique=True, index=False)
+    pepper_version: Mapped[int] = mapped_column(nullable=False, default=1)
 
     # metadata
     name: Mapped[str | None] = mapped_column(String(128), nullable=True)
