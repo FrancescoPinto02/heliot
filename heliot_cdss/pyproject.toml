@@ -31,6 +31,7 @@ anthropic = "^0.53.0"
 sqlalchemy = "^2.0.47"
 alembic = "^1.18.4"
 psycopg = {extras = ["binary"], version = "^3.3.3"}
+python-dotenv = "^1.2.2"
 
 
 [build-system]

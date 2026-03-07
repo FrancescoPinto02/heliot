@@ -1,3 +1,10 @@
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env from project root
+BASE_DIR = Path(__file__).resolve().parents[3]
+load_dotenv(BASE_DIR / ".env")
+
 from fastapi import FastAPI
 from .heliot_endpoints import router as api_router
 from fastapi.middleware.cors import CORSMiddleware
