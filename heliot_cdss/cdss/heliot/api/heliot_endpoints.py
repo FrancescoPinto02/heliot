@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 
-from .auth.deps import require_api_key
 from .models.heliot_models import *
+from .rate_limit.deps import require_rate_limit
 from .services.api_key_service import AuthContext
 from .services.heliot_llm import *
 
@@ -13,7 +13,7 @@ heliot = HeliotLLM()
 @router.post("/allergy_check_enhanced")
 async def allergy_check(
     request: AllergyCheckEnhancedRequest,
-    auth: AuthContext = Depends(require_api_key),
+    auth_context: AuthContext = Depends(require_rate_limit),
 ):
     patient_id = request.patient_id
     drug_code = request.drug_code

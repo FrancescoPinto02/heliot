@@ -25,3 +25,8 @@ config:
     tfamily: "openai"
     #turl: 
 
+rate_limit:
+  algorithm: "fixed_window"
+  fixed_window:
+    limit: 2
+    window_seconds: 120
