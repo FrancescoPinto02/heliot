@@ -36,23 +36,21 @@ async def require_rate_limit(request: Request, response: Response, auth: AuthCon
         logger.warning("WARNING: Rate limiter backend unavailable, allowing request (fail-open): %s", e)
         return auth
 
+    reset_seconds = decision.retry_after_seconds or 0
+
     response.headers["X-RateLimit-Limit"] = str(decision.limit)
     response.headers["X-RateLimit-Remaining"] = str(decision.remaining)
-    response.headers["X-RateLimit-Reset"] = str(
-        decision.retry_after_seconds or decision.window_seconds
-    )
+    response.headers["X-RateLimit-Reset"] = str(reset_seconds)
 
     if not decision.allowed:
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             detail="Rate limit exceeded",
             headers={
-                "Retry-After": str(decision.retry_after_seconds or decision.window_seconds),
+                "Retry-After": str(reset_seconds),
                 "X-RateLimit-Limit": str(decision.limit),
                 "X-RateLimit-Remaining": str(decision.remaining),
-                "X-RateLimit-Reset": str(
-                    decision.retry_after_seconds or decision.window_seconds
-                ),
+                "X-RateLimit-Reset": str(reset_seconds),
             },
         )
 

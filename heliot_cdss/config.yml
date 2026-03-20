@@ -26,7 +26,12 @@ config:
     #turl: 
 
 rate_limit:
-  algorithm: "fixed_window"
-  fixed_window:
-    limit: 2
-    window_seconds: 120
+  algorithm: "token_bucket"
+  token_bucket:
+    capacity: 1
+    refill_rate_per_second: 0.1
+
+  #algorithm: "fixed_window"
+  #fixed_window:
+  #  limit: 2
+  #  window_seconds: 120

@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from fastapi import Request
 
-from .models import BaseRateLimitPolicy, FixedWindowRateLimitPolicy
+from .models import BaseRateLimitPolicy, FixedWindowRateLimitPolicy, TokenBucketRateLimitPolicy
 from .redis_fixed_window import RedisFixedWindowRateLimiter
+from .redis_token_bucket import RedisTokenBucketRateLimiter
 from .service import RateLimiter
 
 
@@ -28,6 +29,22 @@ def build_rate_limit_policy(config: dict) -> BaseRateLimitPolicy:
             window_seconds=window_seconds,
         )
 
+    if algorithm == "token_bucket":
+        token_bucket_cfg = rate_limit_cfg.get("token_bucket", {})
+
+        try:
+            capacity = int(token_bucket_cfg.get("capacity", 10))
+            refill_rate_per_second = float(
+                token_bucket_cfg.get("refill_rate_per_second", 1.0)
+            )
+        except (TypeError, ValueError) as e:
+            raise RuntimeError(f"Invalid token_bucket rate-limit configuration: {e}") from e
+
+        return TokenBucketRateLimitPolicy(
+            capacity=capacity,
+            refill_rate_per_second=refill_rate_per_second,
+        )
+
     raise RuntimeError(f"Unsupported rate limit algorithm: {algorithm}")
 
 
@@ -44,6 +61,12 @@ def build_rate_limiter(request: Request, config: dict) -> RateLimiter:
 
     if algorithm == "fixed_window":
         return RedisFixedWindowRateLimiter(
+            client=redis_client,
+            key_prefix="heliot:rate_limit",
+        )
+
+    if algorithm == "token_bucket":
+        return RedisTokenBucketRateLimiter(
             client=redis_client,
             key_prefix="heliot:rate_limit",
         )

@@ -26,6 +26,16 @@ class FixedWindowRateLimitPolicy(BaseRateLimitPolicy):
         if self.window_seconds <= 0:
             raise ValueError("window_seconds must be > 0")
 
+@dataclass(frozen=True, slots=True)
+class TokenBucketRateLimitPolicy(BaseRateLimitPolicy):
+    capacity: int
+    refill_rate_per_second: float
+
+    def __post_init__(self) -> None:
+        if self.capacity <= 0:
+            raise ValueError("capacity must be > 0")
+        if self.refill_rate_per_second <= 0:
+            raise ValueError("refill_rate_per_second must be > 0")
 
 @dataclass(frozen=True, slots=True)
 class RateLimitDecision:
@@ -34,13 +44,11 @@ class RateLimitDecision:
 
     Attributes:
         allowed: Whether the request is allowed.
-        remaining: Number of requests remaining in the current window.
+        remaining: Number of requests remaining.
         retry_after_seconds: Seconds until the client can retry, if denied.
         limit: Applied limit.
-        window_seconds: Applied time window.
     """
     allowed: bool
     remaining: int
     retry_after_seconds: int | None
     limit: int
-    window_seconds: int

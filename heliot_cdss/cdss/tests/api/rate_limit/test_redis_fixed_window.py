@@ -95,7 +95,6 @@ class TestRedisFixedWindowRateLimiterCheckAndConsume:
         assert decision.remaining == 7
         assert decision.retry_after_seconds is None
         assert decision.limit == 10
-        assert decision.window_seconds == 60
 
         script.assert_awaited_once_with(
             keys=["heliot:test:user-123:window:2"],
@@ -127,7 +126,6 @@ class TestRedisFixedWindowRateLimiterCheckAndConsume:
         assert decision.remaining == 0
         assert decision.retry_after_seconds == 18
         assert decision.limit == 10
-        assert decision.window_seconds == 60
 
     @pytest.mark.asyncio
     async def test_falls_back_to_policy_window_when_redis_ttl_is_negative(self, monkeypatch):

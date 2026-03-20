@@ -64,5 +64,4 @@ class RedisFixedWindowRateLimiter(RateLimiter):
             remaining=remaining,
             retry_after_seconds=ttl if not allowed else None,
             limit=policy.limit,
-            window_seconds=policy.window_seconds,
         )
