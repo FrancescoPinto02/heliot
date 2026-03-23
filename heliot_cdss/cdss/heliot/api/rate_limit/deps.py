@@ -6,7 +6,7 @@ from fastapi import Depends, HTTPException, Request, Response, status
 
 from ..auth.deps import require_api_key
 from ..services.api_key_service import AuthContext
-from .factory import build_rate_limit_policy, build_rate_limiter
+from .factory import build_rate_limit_policy, build_rate_limiter, build_rate_limit_identifier
 from .service import RateLimitBackendError
 
 logger = logging.getLogger(__name__)
@@ -24,8 +24,7 @@ async def require_rate_limit(request: Request, response: Response, auth: AuthCon
 
     policy = build_rate_limit_policy(config)
     limiter = build_rate_limiter(request, config)
-
-    identifier = f"api_key:{auth.api_key_id}"
+    identifier = build_rate_limit_identifier(auth, config)
 
     try:
         decision = await limiter.check_and_consume(

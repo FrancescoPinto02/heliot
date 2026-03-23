@@ -26,6 +26,7 @@ config:
     #turl: 
 
 rate_limit:
+  scope: "project" #"project | api_key"
   algorithm: "token_bucket"
   token_bucket:
     capacity: 1

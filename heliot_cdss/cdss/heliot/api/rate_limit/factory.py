@@ -6,6 +6,7 @@ from .models import BaseRateLimitPolicy, FixedWindowRateLimitPolicy, TokenBucket
 from .redis_fixed_window import RedisFixedWindowRateLimiter
 from .redis_token_bucket import RedisTokenBucketRateLimiter
 from .service import RateLimiter
+from ..services.api_key_service import AuthContext
 
 
 def build_rate_limit_policy(config: dict) -> BaseRateLimitPolicy:
@@ -72,3 +73,23 @@ def build_rate_limiter(request: Request, config: dict) -> RateLimiter:
         )
 
     raise RuntimeError(f"Unsupported rate limit algorithm: {algorithm}")
+
+
+def build_rate_limit_identifier(auth: AuthContext, config: dict) -> str:
+    """
+    Build the rate-limit identifier based on configured scope.
+
+    Supported scopes:
+    - api_key
+    - project
+    """
+    rate_limit_cfg = config.get("rate_limit", {})
+    scope = rate_limit_cfg.get("scope", "api_key")
+
+    if scope == "api_key":
+        return f"api_key:{auth.api_key_id}"
+
+    if scope == "project":
+        return f"project:{auth.project_id}"
+
+    raise RuntimeError(f"Unsupported rate limit scope: {scope}")
