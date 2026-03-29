@@ -8,6 +8,36 @@ import time
 # URL for the REST service
 url = "http://localhost:8000/api/allergy_check_enhanced"
 
+st.sidebar.header("API Configuration")
+api_token = st.sidebar.text_input("API Token", value="", type="password")
+
+
+def build_headers(token: str) -> dict:
+    headers = {}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
+
+
+def handle_api_error(response):
+    if response.status_code in (401, 403):
+        st.error("Authentication error: missing or invalid API token.")
+    elif response.status_code == 429:
+        retry_after = response.headers.get("Retry-After")
+        if retry_after:
+            st.error(f"Rate limit exceeded. Please retry after {retry_after} seconds.")
+        else:
+            st.error("Rate limit exceeded. Please retry later.")
+    else:
+        try:
+            detail = response.text
+        except Exception:
+            detail = ""
+        msg = f"Error: {response.status_code}"
+        if detail:
+            msg += f" - {detail}"
+        st.error(msg)
+
 
 df_d = pd.read_csv('leaflet_info.csv')
 
@@ -112,7 +142,16 @@ with tab1:
         payload = {"patient_id": patient_id, "drug_code": drug_code, "clinical_notes": allergy, "store": store}
 
         with st.spinner("Loading..."):
-            response = requests.post(url, json=payload, stream=True)
+            if not api_token:
+                st.error("Please provide an API token in the sidebar.")
+                st.stop()
+
+            response = requests.post(
+                url,
+                json=payload,
+                headers=build_headers(api_token),
+                stream=True,
+            )
 
             if response.status_code == 200:
                 result_text = ""
@@ -165,7 +204,7 @@ with tab1:
                 #st.subheader("Token usage")
                 #st.json(tk)
             else:
-                st.error(f"Error: {response.status_code}")
+                handle_api_error(response)
 
 
 with tab2:
@@ -235,7 +274,16 @@ with tab2:
                         with st.spinner(f"Processing ID {row['patient_id']}..."):
                             try:
                                 start_time = time.time()
-                                response = requests.post(url, json=payload, stream=False)
+                                if not api_token:
+                                    st.error("Please provide an API token in the sidebar.")
+                                    st.stop()
+
+                                response = requests.post(
+                                    url,
+                                    json=payload,
+                                    headers=build_headers(api_token),
+                                    stream=False,
+                                )
                                 end = time.time()
                             except requests.exceptions.RequestException as e:
                                 st.error(f"Request Error: {e}")
@@ -258,11 +306,20 @@ with tab2:
                                     df.at[i, "timing"] = str(result_row['timing']).replace(".",",")
                                     # Stylize the dataframe with updated data
                                     df_container.dataframe(df, column_config=column_config, use_container_width=True)  # Display the updated dataframe
-                            
+
                             if err:
-                                df.at[i, "response"] = f"Error: {response.status_code}"
-                                # Stylize the dataframe with updated data
-                                df_container.dataframe(df, column_config=column_config, use_container_width=True)  # Display the updated dataframe
+                                if response.status_code in (401, 403):
+                                    df.at[i, "response"] = "Authentication error"
+                                elif response.status_code == 429:
+                                    retry_after = response.headers.get("Retry-After")
+                                    if retry_after:
+                                        df.at[i, "response"] = f"Rate limit exceeded (retry after {retry_after}s)"
+                                    else:
+                                        df.at[i, "response"] = "Rate limit exceeded"
+                                else:
+                                    df.at[i, "response"] = f"Error: {response.status_code}"
+
+                                df_container.dataframe(df, column_config=column_config, use_container_width=True)
  
                     
                     if filename:
