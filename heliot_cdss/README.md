@@ -6,19 +6,25 @@ Heliot CDSS
 
 To setup the Heliot data pipeline, you must procede as follows:
 
-1. Install Python 3.10, if not already installed.
-2. Clone the repository: `git clone https://github.com/gadevito/heliot.git`
+1. Install Python 3.11, if not already installed.
+2. Clone the repository: `git clone https://github.com/FrancescoPinto02/heliot.git`
 3. Navigate to the cloned repository directory: `cd /path/to/heliot`
 4. Navigate to the pipeline directory: `cd /heliot_cdss`
 5. Install poetry: `pip install poetry`
-6. Create a new virtual environment with Python 3.10: `poetry env use python3.10`
-7. Activate the virtual environment: `poetry shell`
+6. Create a new virtual environment with Python 3.11: `poetry env use python3.11`
+7. Activate the virtual environment: `poetry env activate`
 8. Install app dependencies: `poetry install`
-9. Set the required environment variables:
+9. Create a `.env ` file in the heliot_cdss folder and set the required environment variables:
 
    ```
-        export OPENAI_API_KEY=<your_openai_api_key>
+   OPENAI_API_KEY=<your_openai_api_key>
+   DATABASE_URL=postgresql://heliot:heliot@localhost:5432/heliot
+   REDIS_URL=redis://localhost:6379/0
+   HELIOT_API_KEY_PEPPER_V1=<your_api_key_pepper>
    ```
+10. Install Docker, if not already installed.
+11. Start the required services with Docker Compose: `docker compose up -d`
+12. Apply Database migrations using Alembic: `poetry run alembic upgrade head`
 
 ### Run the API SERVER
 In order to run the Heliot API server, you must run the launch script: `poetry run python -m cdss.heliot.api.main`
