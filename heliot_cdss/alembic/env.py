@@ -2,6 +2,7 @@ from logging.config import fileConfig
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
 
 from sqlalchemy import create_engine
 from sqlalchemy import pool
@@ -9,6 +10,8 @@ from alembic import context
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(PROJECT_ROOT))
+
+load_dotenv()
 
 # -------------------------------------------------------------------
 # Alembic Config object
