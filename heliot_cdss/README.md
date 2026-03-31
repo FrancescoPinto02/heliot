@@ -26,11 +26,23 @@ To setup the Heliot data pipeline, you must procede as follows:
 11. Start the required services with Docker Compose: `docker compose up -d`
 12. Apply Database migrations using Alembic: `poetry run alembic upgrade head`
 
+> The `HELIOT_API_KEY_PEPPER_V1` must be a secure random string used to hash API keys.  
+> You can generate one using an online generator such as: https://randomkeygen.com/
+
 ### Run the API SERVER
 In order to run the Heliot API server, you must run the launch script: `poetry run python -m cdss.heliot.api.main`
 
 ### Run the Heliot Web Application
 To run the Heliot web Application, simply run: `poetry run streamlit run ./cdss/heliot/app/webapp.py`
+
+### API Authentication
+The Heliot API is protected using API keys. All requests must include an Authorization header:
+`Authorization: Bearer <your_api_key>`
+
+After setting up the database and running migrations, you can create valid API keys using the CLI utilities available in the project (`heliot_cdss/cdss/api/cli`). These scripts allow you to:
+- create a new project (tenant)
+- generate API Keys for an existing project
+- manage and inspect existing keys and projects
 
 ### Datasets
 In the main folder (`heliot_cdss`) there are the following datasets:
