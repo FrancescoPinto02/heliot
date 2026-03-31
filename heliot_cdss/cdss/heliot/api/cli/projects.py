@@ -1,18 +1,3 @@
-
-"""
-Minimal CLI for managing Projects.
-
-Examples:
-  poetry run python -m cdss.heliot.api.cli.projects create --name "acme"
-  poetry run python -m cdss.heliot.api.cli.projects list
-  poetry run python -m cdss.heliot.api.cli.projects get --id 1
-  poetry run python -m cdss.heliot.api.cli.projects set-active --id 1 --active false
-
-Notes:
-- Requires DATABASE_URL env var (already enforced by your db/session.py).
-- Prints simple, human-readable output.
-"""
-
 from __future__ import annotations
 
 import argparse

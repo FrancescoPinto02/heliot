@@ -1,27 +1,3 @@
-# cdss/heliot/api/cli/api_keys.py
-"""
-Minimal CLI for managing API keys.
-
-Examples:
-  # Create a key (prints token ONCE)
-  poetry run python -m cdss.heliot.api.cli.api_keys create --project-name "acme" --env prod --name "default"
-
-  # Create a key by project id
-  poetry run python -m cdss.heliot.api.cli.api_keys create --project-id 1 --env test --name "default1"
-
-  # List keys
-  poetry run python -m cdss.heliot.api.cli.api_keys list --project-name "acme"
-  poetry run python -m cdss.heliot.api.cli.api_keys list --project-id 1 --active-only
-
-  # Revoke key by prefix
-  python -m cdss.heliot.api.cli.api_keys revoke --prefix 8fj29dk3qz
-
-Env requirements:
-  - DATABASE_URL must be set (your db/session.py enforces it)
-  - HELIOT_API_KEY_PEPPER_V1 must be set (recommended base64url). Example:
-        export HELIOT_API_KEY_PEPPER_V1="pQ7...base64url..."
-"""
-
 from __future__ import annotations
 
 import argparse
