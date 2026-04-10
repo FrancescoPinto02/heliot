@@ -4,6 +4,7 @@ import argparse
 import sys
 from datetime import datetime, timezone
 from typing import Optional
+from dotenv import load_dotenv
 
 from sqlalchemy.orm import Session
 
@@ -13,6 +14,7 @@ from ..security.pepper import EnvPepperProvider
 from ..services.api_key_service import ApiKeyCreate, ApiKeyService, ApiKeyError
 from ..services.project_service import ProjectService, ProjectNotFoundError
 
+load_dotenv()
 
 def _open_session() -> Session:
     return SessionLocal()

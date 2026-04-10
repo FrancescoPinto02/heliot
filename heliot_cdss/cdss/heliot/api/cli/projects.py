@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import sys
 from typing import Iterable
+from dotenv import load_dotenv
 
 from sqlalchemy.orm import Session
 
@@ -15,6 +16,7 @@ from ..services.project_service import (
     ProjectService,
 )
 
+load_dotenv()
 
 def _open_session() -> Session:
     return SessionLocal()
